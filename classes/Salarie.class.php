@@ -44,7 +44,7 @@ class Salarie {
   		return $this->tel_pro;
   	}
   	public function setTelPro($nom){
-  		$this->tel_pro=$nom;
+  		$this->tel_pro=$nom ;
   	}
 
   }
