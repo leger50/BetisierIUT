@@ -24,6 +24,7 @@
 		<td><?php echo $personne -> getPersPre();?></td>
 	</tr>
 
+
 	<?php }	?>
 
 </table>
