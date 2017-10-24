@@ -14,4 +14,6 @@
   </br>
   <label for="captcha"><img src="image/nb/<?php echo $nbAlea1?>.jpg"> + <img src="image/nb/<?php echo $nbAlea2?>.jpg"> = </label>
     <input type="text" name="captcha" id="captcha" />
+  </br>
+  <input type="submit" value="Valider" class="valider">
 </form>
