@@ -15,16 +15,16 @@
 	</tr>
 
 	<?php
-		foreach ($personnes as $personne){ $numpers = $personne -> getPersNum();?>
+		foreach ($personnes as $personne){
+			$numPersonne = $personne -> getPersNum();?>
+
 	<tr>
-		<td><a href="index.php?page=13" name="link"><?php echo $numpers;?></a></td>
+		<td><a href="index.php?page=13&amp;id=<?php echo $numPersonne?>"><?php echo $numPersonne;?></a></td>
 		<td><?php echo $personne -> getPersNom();?></td>
 		<td><?php echo $personne -> getPersPre();?></td>
 	</tr>
 
-	<?php }
-		$_SESSION['numper']=55;
-	?>
+	<?php }	?>
 
 </table>
 

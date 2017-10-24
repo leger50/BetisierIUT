@@ -1,14 +1,15 @@
 <?php
+$numPersonne = $_GET['id'];
+
 $pdo = new Mypdo();
 $perManager = new PersonneManager($pdo);
-if($perManager->estEtudiant($_SESSION['numper'])==null){
+
+if($perManager->estEtudiant($numPersonne)==null){
 $etuManager = new EtudiantManager($pdo);
-$etudiant = $etuManager -> getOneEtudiant($_SESSION['numper']);
+$etudiant = $etuManager -> getOneEtudiant($numPersonne);
 ?>
 
-<div class="sstitre">
-	<h1>Détail sur: <?php echo $etudiant -> getPersonne() -> getPersNom(); ?> </h1>
-</div>
+<h1>Détail sur: <?php echo $etudiant -> getPersonne() -> getPersNom(); ?> </h1>
 
 <table>
 	<tr>
@@ -27,14 +28,13 @@ $etudiant = $etuManager -> getOneEtudiant($_SESSION['numper']);
 	</tr>
 </table>
 <br />
+
 <?php }else{
 	$salManager = new SalarieManager($pdo);
-	$salarie = $salManager -> getOneSalarie($_SESSION['numper']);
+	$salarie = $salManager -> getOneSalarie($numPersonne);
 	?>
 
-	<div class="sstitre">
-		<h1>Détail sur: <?php echo $salarie -> getPersonne() -> getPersNom(); ?> </h1>
-	</div>
+	<h1>Détail sur: <?php echo $salarie -> getPersonne() -> getPersNom(); ?> </h1>
 
 	<table>
 		<tr>
