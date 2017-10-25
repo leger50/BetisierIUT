@@ -15,7 +15,13 @@
 	<div id="header">
 
     <div id="connect">
+      <?php if(!isset($_SESSION['login'])){?>
       <a href="index.php?page=14">Connexion</a>
+
+      <?php }else{
+      $_SESSION['estConnecte'] = false;
+      echo "<p>Utilisateur : ".$_SESSION['login']."<a href='index.php?page=14'>Deconnexion</a></p>";
+      } ?>
 		</div>
 
 		<div id="entete">

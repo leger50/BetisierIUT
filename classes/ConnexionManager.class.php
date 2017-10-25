@@ -7,34 +7,37 @@ class ConnexionManager {
 			$this->db = $db;
 		}
 
-    public function verifLogin($login){
-      $sql = 'SELECT per_login FROM personne';
-
-			$requete = $this->db->prepare($sql);
-			$requete->execute();
-      $existe = $requete->fetch(PDO::FETCH_OBJ);
-
-      return $existe == null;
-    }
-
-    public function verifPassword($pw){
+    public function verifInfos($login, $pw){
       $pwd = protectedPassword($pw);
 
-      $sql = 'SELECT per_pwd FROM personne';
+      $sql = 'SELECT per_login, per_pwd FROM personne WHERE per_login = :login';
 
 			$requete = $this->db->prepare($sql);
+      $requete->bindValue(':login',$login);
 			$requete->execute();
-      $pwdEnregistre = $requete->fetch(PDO::FETCH_OBJ);
+      $user = $requete->fetch(PDO::FETCH_OBJ);
 
-      return $pwdEnregistre == $pwd;
+			if($user == null){
+				return false;
+			}else{
+				$pwdEnregistre = $user->per_pwd;
+	      return $pwd == $pwdEnregistre;
+			}
     }
 
+		public function captchaValide($nb1, $nb2, $nbSaisi){
+			return ($nb1 + $nb2) == $nbSaisi;
+		}
+
     public function estAdmin($login){
-      $sql = 'SELECT per_admin FROM personne';
+      $sql = 'SELECT per_admin FROM personne WHERE per_login = :login';
 
 			$requete = $this->db->prepare($sql);
+			$requete->bindValue(':login',$login);
 			$requete->execute();
       $estAdmin = $requete->fetch(PDO::FETCH_OBJ);
 
-      return $estAdmin == 1;
+      return $estAdmin->per_admin == 1;
     }
+}
+?>

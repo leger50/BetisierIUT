@@ -7,7 +7,7 @@
 <h1>Liste des citations déposées</h1>
 <p>Actuellement <?php echo count($citations)?> citation(s) sont enregistrée(s)</p>
 
-<table>
+<table id="tableCitation">
 	<tr>
 		<th>Nom de l'enseignant</th>
 		<th>Libellé</th>
