@@ -6,8 +6,8 @@
 		<?php if (isset($_SESSION['login']) AND isset($_SESSION['admin'])){?>
 		<p><img class = "icone" src="image/personne.png" alt="Personne"/>Personne</p>
 		<ul>
-			<li><a href="index.php?page=2">Lister</a></li>
-			<li><a href="index.php?page=1">Ajouter</a></li>
+			<li><a href="index.php?page=1">Lister</a></li>
+			<li><a href="index.php?page=2">Ajouter</a></li>
 
 			<?php if ($_SESSION['admin']){?>
 			<li><a href="index.php?page=4">Supprimer</a></li>
@@ -16,7 +16,7 @@
 
 		<p><img class="icone" src="image/citation.gif"  alt="Citation"/>Citations</p>
 		<ul>
-			<li><a href="index.php?page=5">Ajouter</a></li>
+			<li><a href="index.php?page=7">Ajouter</a></li>
 			<li><a href="index.php?page=6">Lister</a></li>
 			<li><a href="index.php?page=8">Rechercher</a></li>
 
@@ -28,19 +28,19 @@
 
 		<p><img class = "icone" src="image/ville.png" alt="Ville"/>Ville</p>
 		<ul>
-			<li><a href="index.php?page=8">Lister</a></li>
-			<li><a href="index.php?page=7">Ajouter</a></li>
-			<li><a href="index.php?page=11">Modifier</a></li>
+			<li><a href="index.php?page=11">Lister</a></li>
+			<li><a href="index.php?page=12">Ajouter</a></li>
+			<li><a href="index.php?page=13">Modifier</a></li>
 
 			<?php if ($_SESSION['admin']){?>
-			<li><a href="index.php?page=12">Supprimer</a></li>
+			<li><a href="index.php?page=14">Supprimer</a></li>
 			<?php } ?>
 		</ul>
 
 	<?php }else{ ?>
 		<p><img class = "icone" src="image/personne.png" alt="Personne"/>Personne</p>
 		<ul>
-			<li><a href="index.php?page=2">Lister</a></li>
+			<li><a href="index.php?page=1">Lister</a></li>
 		</ul>
 
 		<p><img class="icone" src="image/citation.gif"  alt="Citation"/>Citations</p>
@@ -50,7 +50,7 @@
 
 		<p><img class = "icone" src="image/ville.png" alt="Ville"/>Ville</p>
 		<ul>
-			<li><a href="index.php?page=8">Lister</a></li>
+			<li><a href="index.php?page=11">Lister</a></li>
 		</ul>
 	<?php } ?>
 	</div>

@@ -16,11 +16,11 @@
 
     <div id="connect">
       <?php if(!isset($_SESSION['login'])){?>
-      <a href="index.php?page=14">Connexion</a>
+      <a href="index.php?page=15">Connexion</a>
 
       <?php }else{
       $_SESSION['estConnecte'] = false;
-      echo "<p>Utilisateur : ".$_SESSION['login']."<a href='index.php?page=14'>Deconnexion</a></p>";
+      echo "<p>Utilisateur : ".$_SESSION['login']."<a href='index.php?page=15'>Deconnexion</a></p>";
       } ?>
 		</div>
 

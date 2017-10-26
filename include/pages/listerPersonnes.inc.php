@@ -19,7 +19,7 @@
 			$numPersonne = $personne -> getPersNum();?>
 
 	<tr>
-		<td><a href="index.php?page=13&amp;id=<?php echo $numPersonne?>"><?php echo $numPersonne;?></a></td>
+		<td><a href="index.php?page=5&amp;id=<?php echo $numPersonne?>"><?php echo $numPersonne;?></a></td>
 		<td><?php echo $personne -> getPersNom();?></td>
 		<td><?php echo $personne -> getPersPre();?></td>
 	</tr>

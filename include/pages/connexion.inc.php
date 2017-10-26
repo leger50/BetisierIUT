@@ -29,7 +29,7 @@
 
 ?>
 
-<form action="index.php?page=14" id="connexion" method="post">
+<form action="index.php?page=15" id="connexion" method="post">
 
   <label for="nomUser">Nom d'utilisateur : </label>
     <input type="text" name="nomUser" id="nomUser" required/>
