@@ -3,7 +3,7 @@
 
 		<p><a href="index.php?page=0"><img class = "icone" src="image/accueil.gif"  alt="Accueil"/>Accueil</a></p>
 
-		<?php if (isset($_SESSION['login']) AND isset($_SESSION['admin'])){?>
+		<?php if (isset($_SESSION['estConnecte'])){?>
 		<p><img class = "icone" src="image/personne.png" alt="Personne"/>Personne</p>
 		<ul>
 			<li><a href="index.php?page=1">Lister</a></li>
