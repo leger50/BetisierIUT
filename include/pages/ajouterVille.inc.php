@@ -1,3 +1,5 @@
+<?php if(isset($_SESSION['estConnecte'])){?>
+
 <h1>Ajouter une ville</h1>
 
 <?php
@@ -28,3 +30,10 @@ if(empty($_POST['vil_nom'])){
     echo "<p><img class='icone' src='image/erreur.png' alt='Erreur Ville'>La ville '".$ville->getVilNom()."' existe déjà !</p>";
   }
 }
+
+}else{
+  echo "<p>Vous devez être connecté pour accéder à cette page !</p>";
+  echo "<p><img class = 'icone' src='image/erreur.png' alt='Erreur connexion'>Redirection automatique dans 3 secondes</p>";
+  header("Refresh: 3;URL=index.php");
+}
+?>
