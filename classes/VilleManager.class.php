@@ -8,17 +8,19 @@ class VilleManager {
 			$this->db = $db;
 		}
 
+    public function add($ville){
+			if ($this->estPresente($ville)){
+				return false;
+			}else{
+				$sql = 'INSERT INTO ville(vil_nom) VALUES (:ville)';
+				$requete = $this->db->prepare($sql);
 
-    /*  public function add($ville){
-					$requete = $this->db->prepare(
-					'INSERT INTO client(clinom, clipre) VALUES ( :clinom, :clipre);');
+				$requete->bindValue(':ville', $ville->getVilNom());
 
-					$requete->bindValue(':clinom',$client->getNom());
-					$requete->bindValue(':clipre',$client->getPrenom());
-
-					$retour=$requete->execute();
-					return $retour;
-        } */
+				$retour=$requete->execute();
+				return $retour;
+			}
+    }
 
 		public function getAllVilles(){
 			$listeVilles = array();
@@ -34,6 +36,18 @@ class VilleManager {
 
 			$requete->closeCursor();
 			return $listeVilles;
+		}
+
+		private function estPresente($ville){
+			$sql = 'SELECT vil_nom FROM ville WHERE vil_nom = :ville';
+
+			$requete = $this->db->prepare($sql);
+			$requete->bindValue(':ville', $ville->getVilNom());
+
+			$requete->execute();
+
+			$resultat = $requete->fetch(PDO::FETCH_OBJ);
+			return $resultat != null;
 		}
 }
 
