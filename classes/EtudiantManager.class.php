@@ -7,6 +7,38 @@ class EtudiantManager {
 			$this->db = $db;
 		}
 
+		public function add($etudiant){
+
+			if($this->addPersonneEtu($etudiant->getPersonne())){
+
+				$sql = 'INSERT INTO etudiant VALUES (:num, :depNum, :divNum)';
+				$requete = $this->db->prepare($sql);
+
+				$requete->bindValue(':num', $this->getNumEtu($etudiant->getPersonne()));
+				$requete->bindValue(':depNum', $etudiant->getDepNum());
+				$requete->bindValue(':divNum', $etudiant->getDivNum());
+
+				$retour=$requete->execute();
+				return $retour;
+			}
+			return false;
+
+		}
+
+		public function addPersonneEtu($personne){
+			$pdo = new Mypdo();
+			$personneManager = new PersonneManager($pdo);
+			$retour = $personneManager->add($personne);
+			return $retour;
+		}
+
+		public function getNumEtu($personne){
+			$pdo = new Mypdo();
+			$personneManager = new PersonneManager($pdo);
+			$num = $personneManager->getNumAjout($personne);
+			return $num;
+		}
+
     public function getOneEtudiant($num){
 
       $sql = 'SELECT dep_nom, vil_nom FROM departement d

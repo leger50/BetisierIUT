@@ -8,16 +8,37 @@ class PersonneManager {
 		}
 
 
-    /*  public function add($ville){
-					$requete = $this->db->prepare(
-					'INSERT INTO client(clinom, clipre) VALUES ( :clinom, :clipre);');
+    public function add($personne){
+			if ($this->estPresente($personne)){
+				return false;
+			}else{
+					$sql = 'INSERT INTO personne(per_nom, per_prenom, per_tel, per_mail, per_admin,per_login, per_pwd) VALUES (:nom, :prenom, :tel, :mail, 0, :login, :passwd)';
+					$requete = $this->db->prepare($sql);
 
-					$requete->bindValue(':clinom',$client->getNom());
-					$requete->bindValue(':clipre',$client->getPrenom());
+					$requete->bindValue(':nom', $personne->getPersNom());
+					$requete->bindValue(':prenom', $personne->getPersPre());
+					$requete->bindValue(':tel', $personne->getPersTel());
+					$requete->bindValue(':mail', $personne->getPersMail());
+					$requete->bindValue(':login', $personne->getPersLogin());
+					$requete->bindValue(':passwd', $personne->getPersPwd());
 
 					$retour=$requete->execute();
 					return $retour;
-        } */
+    	}
+		}
+
+		public function getNumAjout($personne){
+			$sql = 'SELECT per_num FROM personne WHERE per_nom = :nom AND per_prenom = :prenom';
+
+			$requete = $this->db->prepare($sql);
+			$requete->bindValue(':nom', $personne->getPersNom());
+			$requete->bindValue(':prenom', $personne->getPersPre());
+
+			$requete->execute();
+
+			$resultat = $requete->fetch(PDO::FETCH_OBJ);
+			return $resultat->per_num;
+		}
 
 		public function getAllPersonnes(){
 			$listePersonnes = array();
@@ -49,6 +70,19 @@ class PersonneManager {
 			$requete->closeCursor();
 
 			return $personne;
+		}
+
+		private function estPresente($personne){
+			$sql = 'SELECT per_nom, per_prenom FROM personne WHERE per_nom = :nom AND per_prenom = :prenom';
+
+			$requete = $this->db->prepare($sql);
+			$requete->bindValue(':nom', $personne->getPersNom());
+			$requete->bindValue(':prenom', $personne->getPersPre());
+
+			$requete->execute();
+
+			$resultat = $requete->fetch(PDO::FETCH_OBJ);
+			return $resultat != null;
 		}
 
 		public function estEtudiant($num){

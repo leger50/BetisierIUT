@@ -1,10 +1,41 @@
 <?php
 class SalarieManager {
-
 	private $db;
 
 		public function __construct($db){
 			$this->db = $db;
+		}
+
+		public function add($salarie){
+
+			if($this->addPersonneSal($salarie->getPersonne())){
+
+				$sql = 'INSERT INTO salarie VALUES (:num, :tel, :numFonction)';
+				$requete = $this->db->prepare($sql);
+
+				$requete->bindValue(':num', $this->getNumSal($salarie->getPersonne()));
+				$requete->bindValue(':tel', $salarie->getTelPro());
+				$requete->bindValue(':numFonction', $salarie->getNumFonction());
+
+				$retour=$requete->execute();
+				return $retour;
+			}
+			return false;
+
+		}
+
+		public function addPersonneSal($personne){
+			$pdo = new Mypdo();
+			$personneManager = new PersonneManager($pdo);
+			$retour = $personneManager->add($personne);
+			return $retour;
+		}
+
+		public function getNumSal($personne){
+			$pdo = new Mypdo();
+			$personneManager = new PersonneManager($pdo);
+			$num = $personneManager->getNumAjout($personne);
+			return $num;
 		}
 
     public function getOneSalarie($num){

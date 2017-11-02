@@ -1,8 +1,12 @@
 <?php
 class Salarie {
-    private $tel_pro;
-    private $fonction;
     private $personne;
+
+    private $tel_pro;
+    private $num_fonction;
+
+    private $fonction; //a supprimer
+
 
     public function __construct($personne,$valeursSalarie = array()){
   		if(!empty($valeursSalarie))
@@ -16,6 +20,10 @@ class Salarie {
           case 'sal_telprof':
   					$this->setTelPro($valeur);
   					break;
+
+          case 'fon_num':
+            $this->setNumFonction($valeur);
+            break;
 
           case 'fon_libelle':
   					$this->setFonction($valeur);
@@ -33,18 +41,28 @@ class Salarie {
   		$this->personne=$pers;
   	}
 
-    public function getFonction() {
-  		return $this->fonction;
+    public function getNumFonction() {
+  		return $this->num_fonction;
   	}
-  	public function setFonction($id){
-  		$this->fonction=$id;
+    
+  	public function setNumFonction($num){
+      if(is_numeric($num)){
+  			$this->num_fonction=$num;
+  		}
   	}
 
   	public function getTelPro(){
   		return $this->tel_pro;
   	}
-  	public function setTelPro($nom){
-  		$this->tel_pro=$nom ;
+  	public function setTelPro($tel){
+  		$this->tel_pro=$tel ;
+  	}
+
+    public function getFonction() {
+  		return $this->fonction;
+  	}
+  	public function setFonction($id){
+  		$this->fonction=$id;
   	}
 
   }

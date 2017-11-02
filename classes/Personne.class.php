@@ -5,6 +5,8 @@ class Personne {
 	private $perspre;
 	private $perstel;
 	private $persmail;
+	private $perslogin;
+	private $persPwd;
 
 	public function __construct($valeurs = array()){
 		if(!empty($valeurs))
@@ -23,19 +25,27 @@ class Personne {
 
         case 'per_nom':
 					$this->setPersNom($valeur);
-				break;
+					break;
 
         case 'per_prenom':
 					$this->setPersPre($valeur);
-				break;
+					break;
 
         case 'per_tel':
 					$this->setPersTel($valeur);
-				break;
+					break;
 
         case 'per_mail':
 					$this->setPersMail($valeur);
-				break;
+					break;
+
+				case 'per_login':
+					$this->setPersLogin($valeur);
+					break;
+
+				case 'per_pwd':
+					$this->setPersPwd($valeur);
+					break;
 			}
 		}
 	}
@@ -73,6 +83,20 @@ class Personne {
 	}
 	public function setPersMail($id){
 		$this->persmail=$id;
+	}
+
+	public function getPersLogin() {
+		return $this->perslogin;
+	}
+	public function setPersLogin($login){
+		$this->perslogin=$login;
+	}
+
+	public function getPersPwd() {
+		return $this->persPwd;
+	}
+	public function setPersPwd($pwd){
+		$this->persPwd=protectedPassword($pwd);
 	}
 
 }
