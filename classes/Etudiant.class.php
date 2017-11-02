@@ -5,9 +5,6 @@ class Etudiant {
     private $dep_num;
     private $div_num;
 
-    private $dep_nom; // a modifier avec le num
-    private $vil_nom; //a supprimer
-
     public function __construct($personne,$valeursEtudiant = array()){
   		if(!empty($valeursEtudiant))
   			$this->affecte($valeursEtudiant, $personne);
@@ -24,14 +21,6 @@ class Etudiant {
           case 'div_num':
             $this->setDivNum($valeur);
             break;
-
-          case 'dep_nom':
-  					$this->setDepNom($valeur);
-  					break;
-
-          case 'vil_nom':
-  					$this->setVilleNom($valeur);
-  				break;
   			}
   		}
       $this->setPersonne($personne);
@@ -63,19 +52,4 @@ class Etudiant {
   		  $this->div_num=$num;
       }
   	}
-
-    public function getDepNom() {
-  		return $this->dep_nom;
-  	}
-  	public function setDepNom($id){
-  		$this->dep_nom=$id;
-  	}
-
-  	public function getVilleNom(){
-  		return $this->vil_nom;
-  	}
-  	public function setVilleNom($nom){
-  		$this->vil_nom=$nom;
-  	}
-
   }

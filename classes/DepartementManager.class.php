@@ -23,6 +23,20 @@ class DepartementManager {
 			$requete->closeCursor();
 			return $listeDepartements;
 		}
+
+		public function getOneDepartement($num){
+
+			$sql = 'SELECT dep_num, dep_nom, vil_num FROM departement WHERE dep_num = :num';
+
+			$requete = $this->db->prepare($sql);
+			$requete->bindValue(':num',$num);
+			$requete->execute();
+
+			$departement = new Departement($requete->fetch(PDO::FETCH_OBJ));
+
+			$requete->closeCursor();
+			return $departement;
+		}
 }
 
 ?>

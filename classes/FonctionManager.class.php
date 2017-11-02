@@ -23,6 +23,20 @@ class FonctionManager {
 			$requete->closeCursor();
 			return $listeFonctions;
 		}
+
+		public function getOneFonction($num){
+
+			$sql = 'SELECT fon_num, fon_libelle FROM fonction WHERE fon_num = :num';
+
+			$requete = $this->db->prepare($sql);
+			$requete->bindValue(':num',$num);
+			$requete->execute();
+
+			$fonction = new Fonction($requete->fetch(PDO::FETCH_OBJ));
+
+			$requete->closeCursor();
+			return $fonction;
+		}
 }
 
 ?>

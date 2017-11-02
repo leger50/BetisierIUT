@@ -38,22 +38,19 @@ class SalarieManager {
 			return $num;
 		}
 
-    public function getOneSalarie($num){
+		public function getSalarie($num){
+			$sql = 'SELECT sal_telprof, fon_num FROM salarie WHERE per_num = :num';
 
-      $sql = 'SELECT sal_telprof,fon_libelle FROM salarie s
-              INNER JOIN fonction f  ON f.fon_num= s.fon_num
-              WHERE per_num = :pernum';
-
-      $requete = $this->db->prepare($sql);
-      $requete->bindValue(':pernum',$num);
+			$requete = $this->db->prepare($sql);
+      $requete->bindValue(':num',$num);
       $requete->execute();
 
-      $pdo = new Mypdo();
+			$pdo = new Mypdo();
       $perManager = new PersonneManager($pdo);
-      $salarie = new Salarie($perManager->getOnePersonne($num),$requete->fetch(PDO::FETCH_OBJ));
 
-      $requete->closeCursor();
+			$salarie = new Salarie($perManager->getOnePersonne($num),$requete->fetch(PDO::FETCH_OBJ));
 
+			$requete->closeCursor();
       return $salarie;
-    }
+		}
 }

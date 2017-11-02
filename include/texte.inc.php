@@ -38,7 +38,7 @@ case 4:
 
 case 5:
 	// inclure ici la page détails personnes
-	include_once('pages/detailPers.inc.php');
+	include_once('pages/detailsPersonne.inc.php');
 	break;
 
 //
