@@ -22,6 +22,21 @@ class VilleManager {
 			}
     }
 
+		public function update($ville){
+			if ($this->estPresente($ville)){
+				return false;
+			}else{
+				$sql = 'UPDATE ville SET vil_nom = :nom WHERE vil_num = :num';
+				$requete = $this->db->prepare($sql);
+
+				$requete->bindValue(':nom', $ville->getVilNom());
+				$requete->bindValue(':num', $ville->getVilNum());
+
+				$retour=$requete->execute();
+				return $retour;
+			}
+    }
+
 		public function getAllVilles(){
 			$listeVilles = array();
 
@@ -38,6 +53,23 @@ class VilleManager {
 			return $listeVilles;
 		}
 
+		public function getVille($numVille){
+
+			$sql = 'SELECT vil_num, vil_nom FROM ville WHERE vil_num = :num';
+
+			$requete = $this->db->prepare($sql);
+			$requete->bindValue(':num', $numVille);
+			$requete->execute();
+
+			$ville = $requete->fetch(PDO::FETCH_OBJ);
+
+			$requete->closeCursor();
+
+			$newVille = new Ville($ville);
+			return $newVille;
+		}
+
+		//A SUPPRIMER -> refactor autres classes
 		public function getNomVille($numVille){
 
 			$sql = 'SELECT vil_nom FROM ville WHERE vil_num = :num';

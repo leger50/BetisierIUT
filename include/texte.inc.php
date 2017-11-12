@@ -81,6 +81,7 @@ case 12:
 
 case 13:
 	// inclure ici la page modifier ville
+	include("pages/modifierVille.inc.php");
   break;
 
 case 14:
