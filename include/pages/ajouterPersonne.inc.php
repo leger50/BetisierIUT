@@ -29,8 +29,8 @@ if(isset($_SESSION['estConnecte'])){
           <label for="dep_num">Departement : </label>
           <select name="dep_num" id="dep_num">
             <?php foreach ($listeDepartements as $departement) {
-              $nomVille = $villeManager->getNomVille($departement->getDepVilleNum());
-              echo "<option value=".$departement->getDepNum().">".$departement->getDepNom()." - ".$nomVille."</option>\n";
+              $ville = $villeManager->getVille($departement->getDepVilleNum());
+              echo "<option value=".$departement->getDepNum().">".$departement->getDepNom()." - ".$ville->getVilNom()."</option>\n";
             }?>
           </select>
         </br>

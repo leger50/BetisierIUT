@@ -16,8 +16,8 @@
 	<?php
 		foreach ($villes as $ville){?>
 	<tr>
-		<td><?php echo $ville -> getVilNum();?></td>
-		<td><?php echo $ville -> getVilNom();?></td>
+		<td><?php echo $ville->getVilNum();?></td>
+		<td><?php echo $ville->getVilNom();?></td>
 	</tr>
 	<?php }?>
 

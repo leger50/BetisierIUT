@@ -69,21 +69,6 @@ class VilleManager {
 			return $newVille;
 		}
 
-		//A SUPPRIMER -> refactor autres classes
-		public function getNomVille($numVille){
-
-			$sql = 'SELECT vil_nom FROM ville WHERE vil_num = :num';
-
-			$requete = $this->db->prepare($sql);
-			$requete->bindValue(':num', $numVille);
-			$requete->execute();
-
-			$nomVille = $requete->fetch(PDO::FETCH_OBJ);
-
-			$requete->closeCursor();
-			return $nomVille->vil_nom;
-		}
-
 		private function estPresente($ville){
 			$sql = 'SELECT vil_nom FROM ville WHERE vil_nom = :ville';
 

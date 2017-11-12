@@ -22,8 +22,8 @@ if(isset($_SESSION['estConnecte'])){
   		foreach ($villes as $ville){
         $numVille = $ville->getVilNum()?>
   	<tr>
-  		<td><?php echo $ville -> getVilNum();?></td>
-  		<td><?php echo $ville -> getVilNom();?></td>
+  		<td><?php echo $ville->getVilNum();?></td>
+  		<td><?php echo $ville->getVilNom();?></td>
       <td><a href="index.php?page=13&amp;idVille=<?php echo $numVille?>"><img class='icone' src='image/modifier.png' alt='Modifier ville'></a></td>
   	</tr>
   	<?php }?>

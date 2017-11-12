@@ -13,7 +13,7 @@ $departementManager = new DepartementManager($pdo);
 $departement = $departementManager->getOneDepartement($etudiant->getDepNum());
 
 $villeManager = new VilleManager($pdo);
-$ville = $villeManager->getNomVille($departement->getDepVilleNum());
+$ville = $villeManager->getVille($departement->getDepVilleNum());
 ?>
 
 <h1>Détail sur : <?php echo $etudiant->getPersonne()->getPersNom(); ?> </h1>
@@ -31,7 +31,7 @@ $ville = $villeManager->getNomVille($departement->getDepVilleNum());
 		<td><?php echo $etudiant->getPersonne()->getPersMail();?></td>
 		<td><?php echo $etudiant->getPersonne()->getPersTel();?></td>
     <td><?php echo $departement->getDepNom();?></td>
-		<td><?php echo $ville;?></td>
+		<td><?php echo $ville->getVilNom();?></td>
 	</tr>
 </table>
 <br />
