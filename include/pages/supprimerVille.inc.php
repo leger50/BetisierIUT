@@ -1,5 +1,5 @@
 <?php
-if(isset($_SESSION['estConnecte'])){
+if(isset($_SESSION['estConnecte']) && $_SESSION['admin']){
 
   echo "<h1>Supprimer une ville enregistrée</h1>";
 
@@ -67,8 +67,8 @@ if(isset($_SESSION['estConnecte'])){
   }
 
 }else{
-  echo "<p>Vous devez être connecté pour accéder à cette page !</p>";
+  echo "<p>Vous devez être connecté en tant qu'administrateur pour accéder à cette page !</p>";
   echo "<p><img class = 'icone' src='image/erreur.png' alt='Erreur connexion'>Redirection automatique dans 3 secondes</p>";
-  header("Refresh: 3;URL=index.php?page=14");
+  header("Refresh: 3;URL=index.php");
 }
 ?>
