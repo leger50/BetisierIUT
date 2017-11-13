@@ -26,7 +26,7 @@ class VilleManager {
 			if ($this->estPresente($ville)){
 				return false;
 			}else{
-				$sql = 'UPDATE ville SET vil_nom = :nom WHERE vil_num = :num';
+				$sql = 'UPDATE ville SET vil_nom = :nom WHERE vil_num = (:num)';
 				$requete = $this->db->prepare($sql);
 
 				$requete->bindValue(':nom', $ville->getVilNom());
@@ -35,6 +35,16 @@ class VilleManager {
 				$retour=$requete->execute();
 				return $retour;
 			}
+    }
+
+		public function delete($ville){
+				$sql = 'DELETE FROM ville WHERE vil_num = :num';
+				$requete = $this->db->prepare($sql);
+
+				$requete->bindValue(':num', $ville->getVilNum());
+
+				@$retour=$requete->execute();
+				return $retour;
     }
 
 		public function getAllVilles(){
