@@ -53,4 +53,27 @@ class SalarieManager {
 			$requete->closeCursor();
       return $salarie;
 		}
+
+		public function getAllSalaries(){
+			$listeSalaries = array();
+
+			$sql = 'SELECT per_num, sal_telprof, fon_num FROM salarie';
+
+			$requete = $this->db->prepare($sql);
+			$requete->execute();
+
+			$pdo = new Mypdo();
+      $perManager = new PersonneManager($pdo);
+			$listePersonnes = $perManager->getAllPersonnes();
+
+			while($salarie = $requete->fetch(PDO::FETCH_OBJ)){
+				$listeSalaries[] = new Salarie($perManager->getOnePersonne($salarie->per_num),$salarie);
+			}
+
+			$requete->closeCursor();
+
+			return $listeSalaries;
+		}
+
+
 }

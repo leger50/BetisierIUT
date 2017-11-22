@@ -6,16 +6,19 @@ class CitationManager {
 		$this->db = $db;
 	}
 
-	/*public function add($client){
-					$requete = $this->db->prepare("INSERT INTO client (clinom, clipre, clilogin, clipass) VALUES (:nom, :prenom, '', '');");
+	public function add($citation, $numetu){
 
-					$requete->bindValue(':nom', $client->getCliNom());
-					$requete->bindValue(':prenom', $client->getCliPrenom());
+					$requete = $this->db->prepare("INSERT INTO citation (per_num, per_num_etu, cit_date, cit_libelle) VALUES (:num, :etu, :datecit, :libelle);");
+
+					$requete->bindValue(':num', $citation->getCitNumEnseignant());
+					$requete->bindValue(':etu', $numetu );
+					$requete->bindValue(':datecit', getEnglishDate($citation->getCitDate()));
+					$requete->bindValue(':libelle', $citation->getCitLib());
 
 					$retour=$requete->execute();
 
 					return $retour;
-	}*/
+	}
 
 	public function getAllCitations() {
 		$listeCitations = array();

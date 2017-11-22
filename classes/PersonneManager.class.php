@@ -59,7 +59,7 @@ class PersonneManager {
 
     public function getOnePersonne($num){
 
-			$sql = 'SELECT per_nom, per_prenom , per_mail , per_tel FROM personne WHERE per_num = :pernum ';
+			$sql = 'SELECT per_num, per_nom, per_prenom , per_mail , per_tel FROM personne WHERE per_num = :pernum ';
 
 			$requete = $this->db->prepare($sql);
       $requete->bindValue(':pernum',$num);
@@ -93,5 +93,17 @@ class PersonneManager {
 			$requete->execute();
 			$personne = $requete->fetch(PDO::FETCH_OBJ);
 			return $personne == null;
+		}
+
+		public function getNumLogin($login){
+			$sql = 'SELECT per_num FROM personne WHERE per_login=:per_login';
+
+			$requete = $this->db->prepare($sql);
+			$requete->bindValue(':per_login',$login);
+			$requete->execute();
+			$resultat = $requete->fetch(PDO::FETCH_OBJ);
+			return $resultat->per_num;
+
+
 		}
 }
