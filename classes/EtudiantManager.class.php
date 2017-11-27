@@ -32,6 +32,32 @@ class EtudiantManager {
 			return $retour;
 		}
 
+		public function update($etudiant){
+			$personne = $etudiant->getPersonne();
+
+			if($this->updatePersonneEtu($personne)){
+
+				$sql = 'UPDATE etudiant SET dep_num=:depNum, div_num=:divNum WHERE per_num=:num';
+				$requete = $this->db->prepare($sql);
+
+				$requete->bindValue(':num', $personne->getPersNum());
+				$requete->bindValue(':depNum', $etudiant->getDepNum());
+				$requete->bindValue(':divNum', $etudiant->getDivNum());
+
+				$retour=$requete->execute();
+				return $retour;
+			}
+			return false;
+
+		}
+
+		public function updatePersonneEtu($personne){
+			$pdo = new Mypdo();
+			$personneManager = new PersonneManager($pdo);
+			$retour = $personneManager->update($personne);
+			return $retour;
+		}
+
 		public function getNumEtu($personne){
 			$pdo = new Mypdo();
 			$personneManager = new PersonneManager($pdo);

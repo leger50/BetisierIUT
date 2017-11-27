@@ -31,6 +31,32 @@ class SalarieManager {
 			return $retour;
 		}
 
+		public function update($salarie){
+			$personne = $salarie->getPersonne();
+
+			if($this->updatePersonneSal($personne)){
+
+				$sql = 'UPDATE salarie SET sal_telprof=:telPro, fon_num=:foncNum WHERE per_num=:num';
+				$requete = $this->db->prepare($sql);
+
+				$requete->bindValue(':num', $personne->getPersNum());
+				$requete->bindValue(':telPro', $salarie->getTelPro());
+				$requete->bindValue(':foncNum', $salarie->getNumFonction());
+
+				$retour=$requete->execute();
+				return $retour;
+			}
+			return false;
+
+		}
+
+		public function updatePersonneSal($personne){
+			$pdo = new Mypdo();
+			$personneManager = new PersonneManager($pdo);
+			$retour = $personneManager->update($personne);
+			return $retour;
+		}
+
 		public function getNumSal($personne){
 			$pdo = new Mypdo();
 			$personneManager = new PersonneManager($pdo);
@@ -74,6 +100,4 @@ class SalarieManager {
 
 			return $listeSalaries;
 		}
-
-
 }

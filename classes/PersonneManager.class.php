@@ -27,6 +27,22 @@ class PersonneManager {
     	}
 		}
 
+		public function update($personne){
+				$sql = 'UPDATE personne SET per_nom=:nom, per_prenom=:prenom, per_tel=:tel, per_mail=:mail, per_login=:login
+								WHERE per_num = :num';
+				$requete = $this->db->prepare($sql);
+
+				$requete->bindValue(':num', $personne->getPersNum());
+				$requete->bindValue(':nom', $personne->getPersNom());
+				$requete->bindValue(':prenom', $personne->getPersPre());
+				$requete->bindValue(':tel', $personne->getPersTel());
+				$requete->bindValue(':mail', $personne->getPersMail());
+				$requete->bindValue(':login', $personne->getPersLogin());
+
+				$retour=$requete->execute();
+				return $retour;
+		}
+
 		public function getNumAjout($personne){
 			$sql = 'SELECT per_num FROM personne WHERE per_nom = :nom AND per_prenom = :prenom';
 

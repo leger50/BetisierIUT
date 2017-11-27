@@ -10,6 +10,7 @@
 			<li><a href="index.php?page=2">Ajouter</a></li>
 
 			<?php if ($_SESSION['admin']){?>
+			<li><a href="index.php?page=3">Modifier</a></li>
 			<li><a href="index.php?page=4">Supprimer</a></li>
 			<?php } ?>
 		</ul>
