@@ -43,7 +43,7 @@ class VilleManager {
 
 				$requete->bindValue(':num', $ville->getVilNum());
 
-				@$retour=$requete->execute();
+				$retour=$requete->execute();
 				return $retour;
     }
 

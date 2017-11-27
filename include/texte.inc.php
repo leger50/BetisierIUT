@@ -63,7 +63,7 @@ case 9:
 	break;
 
 case 10:
-	// inclure ici la page supprimer citations
+	include("pages/supprimerCitation.inc.php");
 	break;
 
 //

@@ -20,6 +20,20 @@ class CitationManager {
 					return $retour;
 	}
 
+	public function delete($citation){
+
+			$sql = 'DELETE FROM vote WHERE cit_num = :num';
+			$requete = $this->db->prepare($sql);
+			$requete->bindValue(':num', $citation->getCitNum());
+			$requete->execute();
+
+			$sql = 'DELETE FROM citation WHERE cit_num = :num';
+			$requete = $this->db->prepare($sql);
+			$requete->bindValue(':num', $citation->getCitNum());
+			$retour=$requete->execute();
+			return $retour;
+	}
+
 	public function getAllCitations() {
 		$listeCitations = array();
 
@@ -33,6 +47,22 @@ class CitationManager {
 
 		$requete->closeCursor();
 		return $listeCitations;
+	}
+
+	public function getCitation($numCit){
+
+		$sql = 'SELECT cit_num, per_num, cit_libelle, cit_date FROM citation WHERE cit_num=:num ';
+
+		$requete = $this->db->prepare($sql);
+		$requete->bindValue(':num', $numCit);
+		$requete->execute();
+
+		$citation = $requete->fetch(PDO::FETCH_OBJ);
+
+		$requete->closeCursor();
+
+		$newCitation = new Citation($citation, $this->getVotes($citation->cit_num));
+		return $newCitation;
 	}
 
   private function getVotes($numCitation){
