@@ -1,4 +1,5 @@
 <?php
+if(isset($_GET['id'])){
 $numPersonne = $_GET['id'];
 
 $pdo = new Mypdo();
@@ -62,4 +63,14 @@ $ville = $villeManager->getVille($departement->getDepVilleNum());
 			<td><?php echo $fonction -> getFonLibelle();?></td>
 		</tr>
 	</table>
-	<br /><?php } ?>
+	<br />
+
+<?php
+}
+
+}else{
+  echo "<p>Vous devez être connecté pour accéder à cette page !</p>";
+  echo "<p><img class = 'icone' src='image/erreur.png' alt='Erreur connexion'>Redirection automatique dans 3 secondes</p>";
+  header("Refresh: 3;URL=index.php");
+}
+?>

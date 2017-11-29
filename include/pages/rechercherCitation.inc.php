@@ -86,4 +86,9 @@ if(empty($_POST['per_num']) && empty($_POST['cit_date']) && empty($_POST['vot_va
 
 
 <?php
- } ?>
+}else{
+  echo "<p>Vous devez être connecté pour accéder à cette page !</p>";
+  echo "<p><img class = 'icone' src='image/erreur.png' alt='Erreur connexion'>Redirection automatique dans 3 secondes</p>";
+  header("Refresh: 3;URL=index.php");
+}
+?>
