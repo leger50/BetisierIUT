@@ -17,7 +17,11 @@
 
 		<p><img class="icone" src="image/citation.gif"  alt="Citation"/>Citations</p>
 		<ul>
+
+			<?php if (!$_SESSION['admin']){?>
 			<li><a href="index.php?page=7">Ajouter</a></li>
+			<?php } ?>
+			
 			<li><a href="index.php?page=6">Lister</a></li>
 			<li><a href="index.php?page=8">Rechercher</a></li>
 
