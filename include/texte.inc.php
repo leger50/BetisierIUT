@@ -59,7 +59,7 @@ case 8:
 	break;
 
 case 9:
-	// inclure ici la page valider citations
+		include("pages/validerCitation.inc.php");
 	break;
 
 case 10:

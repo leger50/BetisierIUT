@@ -34,6 +34,30 @@ class CitationManager {
 			return $retour;
 	}
 
+	public function valider($citation, $login){
+			$pdo = new Mypdo();
+			$perManager = new PersonneManager($pdo);
+
+			$sql = 'UPDATE citation SET cit_valide = 1 WHERE cit_num = :num';
+			$requete = $this->db->prepare($sql);
+			$requete->bindValue(':num', $citation->getCitNum());
+			$requete->execute();
+
+			$sql = 'UPDATE citation SET cit_date_valide = CURDATE()  WHERE cit_num = :num';
+			$requete = $this->db->prepare($sql);
+			$requete->bindValue(':num', $citation->getCitNum());
+	//	$requete->bindValue(':dateC', '2017-12-25');
+			$requete->execute();
+
+			$sql = 'UPDATE citation SET per_num_valide = :pernum WHERE cit_num = :num';
+			$requete = $this->db->prepare($sql);
+			$requete->bindValue(':num', $citation->getCitNum());
+			$requete->bindValue(':pernum', $perManager->getNumLogin($login) );
+			$retour=$requete->execute();
+
+			return $retour;
+	}
+
 	public function getAllNewCitations() {
 		$listeCitations = array();
 
