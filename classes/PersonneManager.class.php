@@ -75,7 +75,7 @@ class PersonneManager {
 
     public function getOnePersonne($num){
 
-			$sql = 'SELECT per_num, per_nom, per_prenom , per_mail , per_tel FROM personne WHERE per_num = :pernum ';
+			$sql = 'SELECT per_num, per_nom, per_prenom , per_tel, per_mail , per_login FROM personne WHERE per_num = :pernum ';
 
 			$requete = $this->db->prepare($sql);
       $requete->bindValue(':pernum',$num);
