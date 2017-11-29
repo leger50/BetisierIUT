@@ -120,6 +120,35 @@ class PersonneManager {
 			$resultat = $requete->fetch(PDO::FETCH_OBJ);
 			return $resultat->per_num;
 
+		}
 
+		public function delete($personne){
+			$num = $personne->getPersNum();
+
+			$sql = 'DELETE FROM vote WHERE cit_num = :num';
+			$requete = $this->db->prepare($sql);
+			$requete->bindValue(':num', $num);
+			$requete->execute();
+
+			$sql = 'DELETE FROM citation WHERE cit_num = :num';
+			$requete = $this->db->prepare($sql);
+			$requete->bindValue(':num', $num);
+			$requete->execute();
+
+			$sql = 'DELETE FROM etudiant WHERE per_num = :num';
+			$requete = $this->db->prepare($sql);
+			$requete->bindValue(':num', $num);
+			$requete->execute();
+
+			$sql = 'DELETE FROM salarie WHERE per_num = :num';
+			$requete = $this->db->prepare($sql);
+			$requete->bindValue(':num', $num);
+			$requete->execute();
+
+			$sql = 'DELETE FROM personne WHERE per_num = :num';
+			$requete = $this->db->prepare($sql);
+			$requete->bindValue(':num', $num);
+			$retour = $requete->execute();
+			return $retour;
 		}
 }
