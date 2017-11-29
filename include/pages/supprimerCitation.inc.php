@@ -41,9 +41,14 @@ if(isset($_SESSION['estConnecte']) && $_SESSION['admin']){
 
   if (isset($_POST['valider'])) {
 
-    $retour = $citationManager->delete($_SESSION['citation']);
+    $citationManager->delete($_SESSION['citation']);
     echo "<p><img class='icone' src='image/valid.png' alt='Supprimer citation valide'>La citation '".$_SESSION['citation']->getCitNum()."' a été supprimée</p>";
+
     unset($_SESSION['citation']);
+
+  } elseif (isset($_POST['annuler'])) {
+    unset($_SESSION['citation']);
+    header("Refresh: 1;URL=index.php?page=10");
 
   } else{
     $_SESSION['citation'] = $citationManager->getCitation($_GET['idCit']); ?>
@@ -57,7 +62,7 @@ if(isset($_SESSION['estConnecte']) && $_SESSION['admin']){
 
     </form>
 
-<?php  }
+<?php }
   }
 
 }else{
