@@ -23,6 +23,7 @@ class PersonneManager {
 					$requete->bindValue(':passwd', $personne->getPersPwd());
 
 					$retour=$requete->execute();
+					$requete->closeCursor();
 					return $retour;
     	}
 		}
@@ -40,6 +41,7 @@ class PersonneManager {
 				$requete->bindValue(':login', $personne->getPersLogin());
 
 				$retour=$requete->execute();
+				$requete->closeCursor();
 				return $retour;
 		}
 
@@ -53,6 +55,7 @@ class PersonneManager {
 			$requete->execute();
 
 			$resultat = $requete->fetch(PDO::FETCH_OBJ);
+			$requete->closeCursor();
 			return $resultat->per_num;
 		}
 
@@ -98,6 +101,7 @@ class PersonneManager {
 			$requete->execute();
 
 			$resultat = $requete->fetch(PDO::FETCH_OBJ);
+			$requete->closeCursor();
 			return $resultat != null;
 		}
 
@@ -108,6 +112,7 @@ class PersonneManager {
 			$requete->bindValue(':pernum',$num);
 			$requete->execute();
 			$personne = $requete->fetch(PDO::FETCH_OBJ);
+			$requete->closeCursor();
 			return $personne == null;
 		}
 
@@ -118,6 +123,7 @@ class PersonneManager {
 			$requete->bindValue(':per_login',$login);
 			$requete->execute();
 			$resultat = $requete->fetch(PDO::FETCH_OBJ);
+			$requete->closeCursor();
 			return $resultat->per_num;
 
 		}
@@ -129,26 +135,31 @@ class PersonneManager {
 			$requete = $this->db->prepare($sql);
 			$requete->bindValue(':num', $num);
 			$requete->execute();
+			$requete->closeCursor();
 
 			$sql = 'DELETE FROM citation WHERE cit_num = :num';
 			$requete = $this->db->prepare($sql);
 			$requete->bindValue(':num', $num);
 			$requete->execute();
+			$requete->closeCursor();
 
 			$sql = 'DELETE FROM etudiant WHERE per_num = :num';
 			$requete = $this->db->prepare($sql);
 			$requete->bindValue(':num', $num);
 			$requete->execute();
+			$requete->closeCursor();
 
 			$sql = 'DELETE FROM salarie WHERE per_num = :num';
 			$requete = $this->db->prepare($sql);
 			$requete->bindValue(':num', $num);
 			$requete->execute();
+			$requete->closeCursor();
 
 			$sql = 'DELETE FROM personne WHERE per_num = :num';
 			$requete = $this->db->prepare($sql);
 			$requete->bindValue(':num', $num);
 			$retour = $requete->execute();
+			$requete->closeCursor();
 			return $retour;
 		}
 }

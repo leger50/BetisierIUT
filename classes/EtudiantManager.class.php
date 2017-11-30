@@ -19,6 +19,8 @@ class EtudiantManager {
 				$requete->bindValue(':divNum', $etudiant->getDivNum());
 
 				$retour=$requete->execute();
+
+				$requete->closeCursor();
 				return $retour;
 			}
 			return false;
@@ -45,6 +47,7 @@ class EtudiantManager {
 				$requete->bindValue(':divNum', $etudiant->getDivNum());
 
 				$retour=$requete->execute();
+				$requete->closeCursor();
 				return $retour;
 			}
 			return false;

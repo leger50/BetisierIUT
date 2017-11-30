@@ -102,6 +102,10 @@ class Citation{
 			$moyenne += $note;
 			$compteur++;
 		}
+
+		if($compteur == 0){
+			return "Non notée";
+		}
 		return $moyenne / $compteur;
 	}
 

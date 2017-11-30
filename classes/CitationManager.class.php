@@ -16,6 +16,7 @@ class CitationManager {
 					$requete->bindValue(':libelle', $citation->getCitLib());
 
 					$retour=$requete->execute();
+					$requete->closeCursor();
 
 					return $retour;
 	}
@@ -26,11 +27,13 @@ class CitationManager {
 			$requete = $this->db->prepare($sql);
 			$requete->bindValue(':num', $citation->getCitNum());
 			$requete->execute();
+			$requete->closeCursor();
 
 			$sql = 'DELETE FROM citation WHERE cit_num = :num';
 			$requete = $this->db->prepare($sql);
 			$requete->bindValue(':num', $citation->getCitNum());
 			$retour=$requete->execute();
+			$requete->closeCursor();
 			return $retour;
 	}
 
@@ -42,18 +45,21 @@ class CitationManager {
 			$requete = $this->db->prepare($sql);
 			$requete->bindValue(':num', $citation->getCitNum());
 			$requete->execute();
+			$requete->closeCursor();
 
 			$sql = 'UPDATE citation SET cit_date_valide = CURDATE()  WHERE cit_num = :num';
 			$requete = $this->db->prepare($sql);
 			$requete->bindValue(':num', $citation->getCitNum());
 	//	$requete->bindValue(':dateC', '2017-12-25');
 			$requete->execute();
+			$requete->closeCursor();
 
 			$sql = 'UPDATE citation SET per_num_valide = :pernum WHERE cit_num = :num';
 			$requete = $this->db->prepare($sql);
 			$requete->bindValue(':num', $citation->getCitNum());
 			$requete->bindValue(':pernum', $perManager->getNumLogin($login) );
 			$retour=$requete->execute();
+			$requete->closeCursor();
 
 			return $retour;
 	}
@@ -169,7 +175,6 @@ class CitationManager {
 			}
 			$requete->closeCursor();
 			return $listeCitations;
-
 	}
 }
 

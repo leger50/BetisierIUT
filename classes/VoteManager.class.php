@@ -6,17 +6,6 @@ class VoteManager {
 		$this->db = $db;
 	}
 
-	/*public function add($client){
-					$requete = $this->db->prepare("INSERT INTO client (clinom, clipre, clilogin, clipass) VALUES (:nom, :prenom, '', '');");
-
-					$requete->bindValue(':nom', $client->getCliNom());
-					$requete->bindValue(':prenom', $client->getCliPrenom());
-
-					$retour=$requete->execute();
-
-					return $retour;
-	}*/
-
 	//Utile ?
 	public function getAllVote() {
 		$listeVotes = array();
@@ -47,6 +36,36 @@ class VoteManager {
 
 		$requete->closeCursor();
 		return $listeVotes;
+	}
+
+	public function etudiantANoteCitation($numCitation, $numEtudiant){
+		$sql = "SELECT COUNT(cit_num) AS aVote FROM vote WHERE cit_num = :numCit AND per_num = :perNum";
+
+		$requete = $this->db->prepare($sql);
+		$requete->bindValue(':numCit',$numCitation);
+		$requete->bindValue(':perNum',$numEtudiant);
+
+		$requete->execute();
+
+		$aVote = $requete->fetch(PDO::FETCH_OBJ);
+		$requete->closeCursor();
+
+		$aVote = $aVote->aVote;
+		return $aVote != 0;
+	}
+
+	public function voterCitation($numCitation, $numEtudiant, $valeurVote){
+		$sql = 'INSERT INTO vote VALUES (:numCit, :numEtu, :valVote)';
+
+		$requete = $this->db->prepare($sql);
+		$requete->bindValue(':numCit', $numCitation);
+		$requete->bindValue(':numEtu', $numEtudiant);
+		$requete->bindValue(':valVote', $valeurVote);
+		$retour=$requete->execute();
+
+		$requete->closeCursor();
+
+		return $retour;
 	}
 }
 

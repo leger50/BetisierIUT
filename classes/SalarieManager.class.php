@@ -18,6 +18,7 @@ class SalarieManager {
 				$requete->bindValue(':numFonction', $salarie->getNumFonction());
 
 				$retour=$requete->execute();
+				$requete->closeCursor();
 				return $retour;
 			}
 			return false;
@@ -44,6 +45,7 @@ class SalarieManager {
 				$requete->bindValue(':foncNum', $salarie->getNumFonction());
 
 				$retour=$requete->execute();
+				$requete->closeCursor();
 				return $retour;
 			}
 			return false;

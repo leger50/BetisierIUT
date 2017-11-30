@@ -17,6 +17,8 @@ class ConnexionManager {
 			$requete->execute();
       $user = $requete->fetch(PDO::FETCH_OBJ);
 
+			$requete->closeCursor();
+
 			if($user == null){
 				return false;
 			}else{
@@ -36,6 +38,8 @@ class ConnexionManager {
 			$requete->bindValue(':login',$login);
 			$requete->execute();
       $estAdmin = $requete->fetch(PDO::FETCH_OBJ);
+
+			$requete->closeCursor();
 
       return $estAdmin->per_admin == 1;
     }

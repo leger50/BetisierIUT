@@ -16,6 +16,7 @@ class MotsInterditsManager {
     $requete->bindValue(':lib',$citation->getCitLib());
     $requete->execute();
     $mot = $requete->fetch(PDO::FETCH_OBJ);
+		$requete->closeCursor();
     return $mot != null;
   }
 
@@ -44,6 +45,8 @@ class MotsInterditsManager {
     $requete->bindValue(':mot',$mot);
 		$requete->execute();
     $interdit = $requete->fetch(PDO::FETCH_OBJ);
+
+		$requete->closeCursor();
     return $interdit != null;
   }
 

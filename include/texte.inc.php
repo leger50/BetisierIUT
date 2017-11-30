@@ -97,6 +97,11 @@ case 15:
 	include("pages/connexion.inc.php");
   break;
 
+case 16:
+	// inclure ici la page connexion
+	include("pages/noterCitation.inc.php");
+  break;
+
 default :
 	include_once('pages/accueil.inc.php');
 }

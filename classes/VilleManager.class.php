@@ -18,6 +18,7 @@ class VilleManager {
 				$requete->bindValue(':ville', $ville->getVilNom());
 
 				$retour=$requete->execute();
+				$requete->closeCursor();
 				return $retour;
 			}
     }
@@ -33,6 +34,7 @@ class VilleManager {
 				$requete->bindValue(':num', $ville->getVilNum());
 
 				$retour=$requete->execute();
+				$requete->closeCursor();
 				return $retour;
 			}
     }
@@ -44,6 +46,7 @@ class VilleManager {
 				$requete->bindValue(':num', $ville->getVilNum());
 
 				$retour=$requete->execute();
+				$requete->closeCursor();
 				return $retour;
     }
 
@@ -88,6 +91,7 @@ class VilleManager {
 			$requete->execute();
 
 			$resultat = $requete->fetch(PDO::FETCH_OBJ);
+			$requete->closeCursor();
 			return $resultat != null;
 		}
 }
