@@ -1,5 +1,5 @@
 <?php
-if(isset($_GET['numCit']) || isset($_SESSION['citation']) || isset($_REQUEST['numCit'])){
+if(isset($_GET['numCit']) || isset($_SESSION['citation'])){
   $pdo=new Mypdo();
 
   if(isset($_GET['numCit'])){
