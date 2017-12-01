@@ -20,7 +20,7 @@
 
       <?php }else{
       $_SESSION['estConnecte'] = false;
-      echo "<p>Utilisateur : ".$_SESSION['login']."<a href='index.php?page=15'>Deconnexion</a></p>";
+      echo "Utilisateur : ".$_SESSION['login']."<a href='index.php?page=15'> Deconnexion</a>";
       } ?>
 		</div>
 
