@@ -69,7 +69,7 @@ $ville = $villeManager->getVille($departement->getDepVilleNum());
 }
 
 }else{
-  echo "<p>Vous devez être connecté pour accéder à cette page !</p>";
+  echo "<p>Vous n'avez pas les droits pour accéder à cette page !</p>";
   echo "<p><img class = 'icone' src='image/erreur.png' alt='Erreur connexion'>Redirection automatique dans 3 secondes</p>";
   header("Refresh: 3;URL=index.php");
 }

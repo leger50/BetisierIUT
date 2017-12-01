@@ -115,6 +115,7 @@ if(isset($_SESSION['estConnecte'])){
 
       if($retour){
         echo "<p><img class='icone' src='image/valid.png' alt='Valide etudiant'>L'étudiant '".$etudiant->getPersonne()->getPersPre().' '.$etudiant->getPersonne()->getPersNom()."' a été ajouté</p>";
+        header("Refresh: 3;URL=index.php");
       }
       else{
         echo "<p><img class='icone' src='image/erreur.png' alt='Erreur etudiant'>L'étudiant '".$etudiant->getPersonne()->getPersPre().' '.$etudiant->getPersonne()->getPersNom()."' existe déjà !</p>";
@@ -136,7 +137,7 @@ if(isset($_SESSION['estConnecte'])){
       }
       unset($_SESSION['estValide']);
       unset($_SESSION['addPersonne']);
-
+      header("Refresh: 3;URL=index.php");
     }
 }
 

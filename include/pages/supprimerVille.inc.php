@@ -46,6 +46,7 @@ if(isset($_SESSION['estConnecte']) && $_SESSION['admin']){
       echo "<p><img class='icone' src='image/erreur.png' alt='Supprimer ville erreur'>La ville '".$_SESSION['ville']->getVilNom()."' est encore associée à un ou plusieurs étudiants, suppression impossible !</p>";
     }
     unset($_SESSION['ville']);
+    header("Refresh: 3;URL=index.php");
 
   } elseif (isset($_POST['annuler'])) {
     unset($_SESSION['ville']);

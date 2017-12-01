@@ -172,7 +172,6 @@ if(isset($_SESSION['estConnecte']) && $_SESSION['admin']){
       echo "<p><img class='icone' src='image/erreur.png' alt='Erreur modification etudiant'>L'étudiant '".$etudiant->getPersonne()->getPersPre().' '.$etudiant->getPersonne()->getPersNom()."' n'a pu être modifié</p>";
     }
     unset($_SESSION['etudiant']);
-
   }
 
   if(!empty($_POST['sal_telprof'])){
@@ -191,6 +190,7 @@ if(isset($_SESSION['estConnecte']) && $_SESSION['admin']){
 
   unset($_SESSION['estValide']);
   unset($_SESSION['personne']);
+  header("Refresh: 3;URL=index.php");
 }
 }
 //FERMER TOUTES LES VARS DE SESSION, TOUTEEEEEEEEESSSS

@@ -41,6 +41,7 @@ if(isset($_SESSION['estConnecte']) && $_SESSION['admin']){
     echo "<p><img class='icone' src='image/valid.png' alt='Supprimer personne valide'>La personne '".$_SESSION['personne']->getPersPre().' '.$_SESSION['personne']->getPersNom()."' a été supprimée</p>";
 
     unset($_SESSION['personne']);
+    header("Refresh: 3;URL=index.php");
 
   } elseif (isset($_POST['annuler'])) {
     unset($_SESSION['personne']);

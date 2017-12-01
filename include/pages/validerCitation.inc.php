@@ -38,12 +38,14 @@ if(isset($_SESSION['estConnecte']) && $_SESSION['admin']){
     $pdo = new Mypdo();
   	$citationManager = new CitationManager($pdo);
     if(empty($_GET['idCitSup'])&&empty($_GET['idCitVal'])){
+      $enseignant = $_SESSION['citation']->getNomEnseignant($_SESSION['citation']->getCitNumEnseignant());
       if (isset($_POST['validerSup'])) {
             $citationManager->delete($_SESSION['citation']);
-            echo "<p><img class='icone' src='image/valid.png' alt='Supprimer citation valide'>La citation '".$_SESSION['citation']->getCitNum()."' a été supprimée</p>";
+            echo "<p><img class='icone' src='image/valid.png' alt='Supprimer citation valide'>La citation de '".$enseignant."' a été supprimée</p>";
 
             unset($_SESSION['citation']);
             unset($_SESSION['supprimer']);
+            header("Refresh: 1;URL=index.php?page=9");
 
         }elseif (isset($_POST['annulerSup'])) {
             unset($_SESSION['supprimer']);
@@ -52,9 +54,11 @@ if(isset($_SESSION['estConnecte']) && $_SESSION['admin']){
 
         }elseif(isset($_POST['validerVal'])){
             $retour = $citationManager->valider($_SESSION['citation'], $_SESSION['login']);
-            echo "<p><img class='icone' src='image/valid.png' alt='Supprimer citation valide'>La citation '".$_SESSION['citation']->getCitNum()."' a été validée</p>";
+            echo "<p><img class='icone' src='image/valid.png' alt='Supprimer citation valide'>La citation de '".$enseignant."' a été validée</p>";
             unset($_SESSION['supprimer']);
             unset($_SESSION['citation']);
+            header("Refresh: 1;URL=index.php?page=9");
+
         }elseif(isset($_POST['annulerVal'])){
             unset($_SESSION['supprimer']);
             unset($_SESSION['citation']);
@@ -87,7 +91,7 @@ if(isset($_SESSION['estConnecte']) && $_SESSION['admin']){
       <input type="submit" name="annulerVal" value="Annuler" class="Annuler"> <!--Modifier css-->
 
     </form>
-    
+
 <?php
     }
   }

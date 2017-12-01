@@ -56,6 +56,7 @@ if(isset($_GET['numCit']) || isset($_SESSION['citation'])){
         echo "<p><img class='icone' src='image/erreur.png' alt='Erreur valider vote'>Le vote concernant la citation de '".$enseignant."' n'a pu être validée !</p>";
       }
       unset($_SESSION['citation']);
+      header("Refresh: 3;URL=index.php");
 
     }else{
       unset($_SESSION['citation']);

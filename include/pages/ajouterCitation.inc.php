@@ -55,8 +55,11 @@ if(isset($_SESSION['estConnecte']) && !$_SESSION['admin'] ){
     else{
       $_SESSION['aDesMotsInterdits'] = false;
       $retour = $citationManager->add($citation,$personneManager->getNumLogin($_SESSION['login']));
-        echo "<p><img class='icone' src='image/valid.png' alt='Valide citation'>La citation a été ajoutée</p>";
-        unset($_SESSION['aDesMotsInterdits']);
+
+      unset($_SESSION['aDesMotsInterdits']);
+
+      echo "<p><img class='icone' src='image/valid.png' alt='Valide citation'>La citation a été ajoutée</p>";
+      header("Refresh: 3;URL=index.php");
     }
   }
 

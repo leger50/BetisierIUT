@@ -59,6 +59,7 @@ if(isset($_SESSION['estConnecte'])){
     echo "<p><img class='icone' src='image/erreur.png' alt='Modification erreur ville'>La ville '".$_SESSION['ville']->getVilNom()."' existe déjà !</p>";
   }
   unset($_SESSION['ville']);
+  header("Refresh: 3;URL=index.php");
 }
 }
 

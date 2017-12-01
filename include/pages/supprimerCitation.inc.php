@@ -42,9 +42,11 @@ if(isset($_SESSION['estConnecte']) && $_SESSION['admin']){
   if (isset($_POST['valider'])) {
 
     $citationManager->delete($_SESSION['citation']);
-    echo "<p><img class='icone' src='image/valid.png' alt='Supprimer citation valide'>La citation '".$_SESSION['citation']->getCitNum()."' a été supprimée</p>";
+    $enseignant = $_SESSION['citation']->getNomEnseignant($_SESSION['citation']->getCitNumEnseignant());
+    echo "<p><img class='icone' src='image/valid.png' alt='Supprimer citation valide'>La citation '".$enseignant."' a été supprimée</p>";
 
     unset($_SESSION['citation']);
+    header("Refresh: 3;URL=index.php");
 
   } elseif (isset($_POST['annuler'])) {
     unset($_SESSION['citation']);

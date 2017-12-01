@@ -29,6 +29,7 @@ if(empty($_POST['vil_nom'])){
   else{
     echo "<p><img class='icone' src='image/erreur.png' alt='Erreur Ville'>La ville '".$ville->getVilNom()."' existe déjà !</p>";
   }
+  header("Refresh: 3;URL=index.php");
 }
 
 }else{
