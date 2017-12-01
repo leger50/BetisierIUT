@@ -39,15 +39,38 @@ class VilleManager {
 			}
     }
 
+		private function estAssocie($ville){
+			$sql = "SELECT COUNT(dep_num) AS villeAssocie FROM departement WHERE vil_num = :numVille";
+			$requete = $this->db->prepare($sql);
+
+			$requete->bindValue(':numVille', $ville->getVilNum());
+			$requete->execute();
+			$villeAssocie = $requete->fetch(PDO::FETCH_OBJ);
+			$villeAssocie = $villeAssocie->villeAssocie;
+			$requete->closeCursor();
+
+			return $villeAssocie;
+		}
+
 		public function delete($ville){
-				$sql = 'DELETE FROM ville WHERE vil_num = :num';
-				$requete = $this->db->prepare($sql);
 
-				$requete->bindValue(':num', $ville->getVilNum());
+				$villeAssocie = $this->estAssocie($ville);
 
-				$retour=$requete->execute();
-				$requete->closeCursor();
-				return $retour;
+				if($villeAssocie == 0){
+					$sql = 'DELETE FROM ville WHERE vil_num = :num';
+					$requete = $this->db->prepare($sql);
+
+					$requete->bindValue(':num', $ville->getVilNum());
+
+					$retour=$requete->execute();
+					$requete->closeCursor();
+					return $retour;
+				}else{
+					return false;
+				}
+
+
+
     }
 
 		public function getAllVilles(){
