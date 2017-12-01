@@ -120,6 +120,7 @@ if(isset($_SESSION['estConnecte'])){
         echo "<p><img class='icone' src='image/erreur.png' alt='Erreur etudiant'>L'étudiant '".$etudiant->getPersonne()->getPersPre().' '.$etudiant->getPersonne()->getPersNom()."' existe déjà !</p>";
       }
       unset($_SESSION['estValide']);
+      unset($_SESSION['addPersonne']);
 
     }
     if(!empty($_POST['sal_telprof'])){
@@ -134,6 +135,7 @@ if(isset($_SESSION['estConnecte'])){
         echo "<p><img class='icone' src='image/erreur.png' alt='Erreur salarie'>Le salarié '".$salarie->getPersonne()->getPersPre().' '.$salarie->getPersonne()->getPersNom()."' existe déjà !</p>";
       }
       unset($_SESSION['estValide']);
+      unset($_SESSION['addPersonne']);
 
     }
 }

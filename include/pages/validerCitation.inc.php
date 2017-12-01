@@ -38,30 +38,28 @@ if(isset($_SESSION['estConnecte']) && $_SESSION['admin']){
     $pdo = new Mypdo();
   	$citationManager = new CitationManager($pdo);
     if(empty($_GET['idCitSup'])&&empty($_GET['idCitVal'])){
-    if (isset($_POST['validerSup'])) {
-          $citationManager->delete($_SESSION['citation']);
-          echo "<p><img class='icone' src='image/valid.png' alt='Supprimer citation valide'>La citation '".$_SESSION['citation']->getCitNum()."' a été supprimée</p>";
+      if (isset($_POST['validerSup'])) {
+            $citationManager->delete($_SESSION['citation']);
+            echo "<p><img class='icone' src='image/valid.png' alt='Supprimer citation valide'>La citation '".$_SESSION['citation']->getCitNum()."' a été supprimée</p>";
 
-          unset($_SESSION['citation']);
-          unset($_SESSION['supprimer']);
+            unset($_SESSION['citation']);
+            unset($_SESSION['supprimer']);
 
-      }elseif (isset($_POST['annulerSup'])) {
-          unset($_SESSION['supprimer']);
-          unset($_SESSION['citation']);
-          header("Refresh: 1;URL=index.php?page=9");
+        }elseif (isset($_POST['annulerSup'])) {
+            unset($_SESSION['supprimer']);
+            unset($_SESSION['citation']);
+            header("Refresh: 1;URL=index.php?page=9");
 
-      }elseif(isset($_POST['validerVal'])){
-          $retour = $citationManager->valider($_SESSION['citation'], $_SESSION['login']);
-          echo "<p><img class='icone' src='image/valid.png' alt='Supprimer citation valide'>La citation '".$_SESSION['citation']->getCitNum()."' a été validée</p>";
-          unset($_SESSION['supprimer']);
-          unset($_SESSION['citation']);
-      }
-      elseif(isset($_POST['annulerVal'])){
-          unset($_SESSION['supprimer']);
-          unset($_SESSION['citation']);
-          header("Refresh: 1;URL=index.php?page=9");
-      }
-
+        }elseif(isset($_POST['validerVal'])){
+            $retour = $citationManager->valider($_SESSION['citation'], $_SESSION['login']);
+            echo "<p><img class='icone' src='image/valid.png' alt='Supprimer citation valide'>La citation '".$_SESSION['citation']->getCitNum()."' a été validée</p>";
+            unset($_SESSION['supprimer']);
+            unset($_SESSION['citation']);
+        }elseif(isset($_POST['annulerVal'])){
+            unset($_SESSION['supprimer']);
+            unset($_SESSION['citation']);
+            header("Refresh: 1;URL=index.php?page=9");
+        }
 
     } elseif(!empty($_GET['idCitSup'])){
         $_SESSION['supprimer'] = true;
@@ -76,7 +74,8 @@ if(isset($_SESSION['estConnecte']) && $_SESSION['admin']){
 
       </form>
 
-  <?php  } elseif (!empty($_GET['idCitVal'])){
+<?php
+  }elseif(!empty($_GET['idCitVal'])){
       $_SESSION['supprimer'] = false;
       $_SESSION['citation'] = $citationManager->getCitation($_GET['idCitVal']); ?>
 
@@ -88,12 +87,14 @@ if(isset($_SESSION['estConnecte']) && $_SESSION['admin']){
       <input type="submit" name="annulerVal" value="Annuler" class="Annuler"> <!--Modifier css-->
 
     </form>
+    
 <?php
     }
-}
-  }else{
+  }
+
+}else{
     echo "<p>Vous devez être connecté en tant qu'administrateur pour accéder à cette page !</p>";
     echo "<p><img class = 'icone' src='image/erreur.png' alt='Erreur connexion'>Redirection automatique dans 3 secondes</p>";
     header("Refresh: 3;URL=index.php");
-  }
-  ?>
+}
+?>
