@@ -14,6 +14,8 @@
 	<body>
 	<div id="header">
 
+
+
     <div id="connect">
       <?php if(!isset($_SESSION['login'])){?>
       <a href="index.php?page=15">Connexion</a>
@@ -25,9 +27,16 @@
 		</div>
 
 		<div id="entete">
+      <?php
+      if(isset($_SESSION['estConnecte'])){ ?>
+        <div id="logo">
+          <img id="imHeader" class="centreImage" src="image/smile.jpg" alt="Covoiturage IUT" title="Covoiturage IUT Limousin"/>
+  			</div>
+      <?php } else { ?>
 			<div id="logo">
-
+        <img id="imHeader" class="centreImage" src="image/lebetisier.gif" alt="Covoiturage IUT" title="Covoiturage IUT Limousin"/>
 			</div>
+    <?php } ?>
 			<div id="titre">
 				Le bétisier de l'IUT,<br />Partagez les meilleures perles !!!
 			</div>
