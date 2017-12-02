@@ -4,7 +4,7 @@
 	$personnes = $perManager -> getAllPersonnes();
 
 	if(isset($_SESSION['estConnecte'])){ ?>
-		<a href="index.php?page=17">Modifier mon mot de passe</a>
+		<a id="lienPass" href="index.php?page=17">Modifier mon mot de passe</a>
 <?php } ?>
 
 <h1>Liste des Personnes</h1>
