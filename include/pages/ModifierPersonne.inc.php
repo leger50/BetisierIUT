@@ -4,7 +4,7 @@ if(isset($_SESSION['estConnecte']) && $_SESSION['admin']){
   if(empty($_GET['idPersonne']) && !isset($_SESSION['estValide'])){
   	$pdo = new Mypdo();
 		$perManager = new PersonneManager($pdo);
-		$personnes = $perManager -> getAllPersonnes();
+		$personnes = $perManager->getAllPersonnes();
 
   ?>
 
@@ -40,7 +40,8 @@ if(isset($_SESSION['estConnecte']) && $_SESSION['admin']){
 
   if(!isset($_SESSION['personne'])){
     $_SESSION['estValide'] = true;
-    $_SESSION['personne'] = $perManager->getOnePersonne($_GET['idPersonne']);?>
+    $_SESSION['personne'] = $perManager->getOnePersonne($_GET['idPersonne']);
+    $_SESSION['numConnecte'] = $perManager->getNumLogin($_SESSION['login']); ?>
 
     <h1>Modifier une Personne</h1>
 
@@ -178,6 +179,10 @@ if(isset($_SESSION['estConnecte']) && $_SESSION['admin']){
 
     if($retour){
       echo "<p><img class='icone' src='image/valid.png' alt='Valide modification salarie'>Le salarié '".$salarie->getPersonne()->getPersPre().' '.$salarie->getPersonne()->getPersNom()."' a été modifié</p>";
+
+      if($_SESSION['numConnecte'] == $salarie->getPersonne()->getPersNum()){
+        $_SESSION['login'] = $salarie->getPersonne()->getPersLogin();
+      }
     }
     else{
       echo "<p><img class='icone' src='image/erreur.png' alt='Erreur modification salarie'>Le salarié '".$salarie->getPersonne()->getPersPre().' '.$salarie->getPersonne()->getPersNom()."' n'a pu être modifié</p>";
@@ -187,6 +192,7 @@ if(isset($_SESSION['estConnecte']) && $_SESSION['admin']){
 
   unset($_SESSION['estValide']);
   unset($_SESSION['personne']);
+  unset($_SESSION['numConnecte']);
   header("Refresh: 3;URL=index.php");
 }
 }
