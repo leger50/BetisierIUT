@@ -14,8 +14,6 @@
 	<body>
 	<div id="header">
 
-
-
     <div id="connect">
       <?php if(!isset($_SESSION['login'])){?>
       <a href="index.php?page=15">Connexion</a>

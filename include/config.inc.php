@@ -4,7 +4,7 @@
 
 define('DBHOST', "localhost");
 define('DBNAME', "betisier");
-define('DBUSER', "bd");
+define('DBUSER', "bede");
 define('DBPASSWD', "bede");
 define('ENV','dev');
 // pour un environememnt de production remplacer 'dev' (d�veloppement) par 'prod' (production)
