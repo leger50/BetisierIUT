@@ -211,6 +211,19 @@ td, th{
 	color : red;
 }
 
+.messConfirmation{
+	border: 3px solid green;
+	width: 20%;
+	margin: 0 auto;
+	margin-top: 1%;
+}
+
+.messConfirmation p{
+	text-align : center;
+	font-weight : bold;
+	color : green;
+}
+
 input {
  padding:3px;
  border:1px solid #00000;

@@ -102,6 +102,11 @@ case 16:
 	include("pages/noterCitation.inc.php");
   break;
 
+case 17:
+	// inclure ici la page noterCitation
+	include("pages/modifierPassword.inc.php");
+  break;
+
 default :
 	include_once('pages/accueil.inc.php');
 }

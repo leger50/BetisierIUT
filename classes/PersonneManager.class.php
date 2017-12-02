@@ -45,6 +45,18 @@ class PersonneManager {
 				return $retour;
 		}
 
+		public function updatePassword($personne){
+			$sql = 'UPDATE personne SET per_pwd=:password	WHERE per_num = :num';
+			$requete = $this->db->prepare($sql);
+
+			$requete->bindValue(':num', $personne->getPersNum());
+			$requete->bindValue(':password', $personne->getPersPwd());
+
+			$retour=$requete->execute();
+			$requete->closeCursor();
+			return $retour;
+		}
+
 		public function getNumAjout($personne){
 			$sql = 'SELECT per_num FROM personne WHERE per_nom = :nom AND per_prenom = :prenom';
 
