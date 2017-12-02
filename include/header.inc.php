@@ -28,11 +28,11 @@
       <?php
       if(isset($_SESSION['estConnecte'])){ ?>
         <div id="logo">
-          <img id="imHeader" class="centreImage" src="image/smile.jpg" alt="Covoiturage IUT" title="Covoiturage IUT Limousin"/>
+          <img id="imHeader" class="centreImage" src="image/smile.jpg" alt="Bétisier IUT" title="Bétisier IUT Limousin"/>
   			</div>
       <?php } else { ?>
 			<div id="logo">
-        <img id="imHeader" class="centreImage" src="image/lebetisier.gif" alt="Covoiturage IUT" title="Covoiturage IUT Limousin"/>
+        <img id="imHeader" class="centreImage" src="image/lebetisier.gif" alt="Bétisier IUT" title="Bétisier IUT Limousin"/>
 			</div>
     <?php } ?>
 			<div id="titre">
