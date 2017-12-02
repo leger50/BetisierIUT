@@ -98,7 +98,7 @@ case 15:
   break;
 
 case 16:
-	// inclure ici la page connexion
+	// inclure ici la page noterCitation
 	include("pages/noterCitation.inc.php");
   break;
 
