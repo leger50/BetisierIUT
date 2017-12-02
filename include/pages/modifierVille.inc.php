@@ -44,7 +44,7 @@ if(isset($_SESSION['estConnecte'])){
     <label for="vil_nom">Nom : </label>
       <input type="text" name="vil_nom" id="vil_nom" value="<?php echo $_SESSION['ville']->getVilNom()?>" required/>
     </br>
-  	<input type="submit" value="Valider" class="valider">
+  	<input type="submit" value="Valider" class="btn">
 
   </form>
 

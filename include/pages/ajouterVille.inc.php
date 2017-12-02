@@ -11,7 +11,7 @@ if(empty($_POST['vil_nom'])){
   <label for="vil_nom">Nom : </label>
     <input type="text" name="vil_nom" id="vil_nom" required/>
   </br>
-	<input type="submit" value="Valider" class="valider">
+	<input type="submit" value="Valider" class="btn">
 
 </form>
 

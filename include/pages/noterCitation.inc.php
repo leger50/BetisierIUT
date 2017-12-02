@@ -29,8 +29,8 @@ if(isset($_GET['numCit']) || isset($_SESSION['citation'])){
         <input type="text" name="valeurNote" id="valeurNote" />
       </br>
 
-      <input type="submit" name="valider" value="Valider" class="valider">
-      <input type="submit" name="annuler" value="Annuler" class="annuler">
+      <input type="submit" name="valider" value="Valider" class="btn">
+      <input type="submit" name="annuler" value="Annuler" class="btn">
     </form>
 
 <?php //else if pour valider et annuler

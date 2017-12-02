@@ -31,7 +31,7 @@ if(isset($_SESSION['estConnecte']) && !$_SESSION['admin'] ){
               <input type="textarea" name="cit_libelle" id="cit_libelle" required/>
             </br>
 
-            <input type="submit" value="Valider" class="valider">
+            <input type="submit" value="Valider" class="btn">
           </form>
   <?php }
 
@@ -101,7 +101,7 @@ if(isset($_SESSION['estConnecte']) && !$_SESSION['admin'] ){
             <input type="textarea" name="cit_libelle" id="cit_libelle" value="<?php echo $citationModifie ?>" required/>
           </br>
 
-          <input type="submit" value="Valider" class="valider">
+          <input type="submit" value="Valider" class="btn">
         </form>
 
   <?php

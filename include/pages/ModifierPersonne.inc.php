@@ -65,7 +65,7 @@ if(isset($_SESSION['estConnecte']) && $_SESSION['admin']){
 
       <input type="hidden" name="per_num" id="per_num" value="<?php echo $_SESSION['personne']->getPersNum()?>"/>
 
-      <input type="submit" value="Valider" class="valider">
+      <input type="submit" value="Valider" class="btn">
 
     </form>
 
@@ -119,7 +119,7 @@ if(isset($_SESSION['estConnecte']) && $_SESSION['admin']){
         </select>
       </br>
 
-      <input type="submit" value="Valider" class="valider">
+      <input type="submit" value="Valider" class="btn">
       </form>
 
 		<!--TODO partie salarie-->
@@ -152,7 +152,7 @@ if(isset($_SESSION['estConnecte']) && $_SESSION['admin']){
         </select>
       </br>
 
-      <input type="submit" value="Valider" class="valider">
+      <input type="submit" value="Valider" class="btn">
       </form>
 
   <?php

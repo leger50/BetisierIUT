@@ -59,8 +59,8 @@ if(isset($_SESSION['estConnecte']) && $_SESSION['admin']){
 
       <label for="confSuppre">Etes-vous sûr de vouloir supprimer cette ville ?</label>
       </br>
-    	<input type="submit" name="valider" value="Valider" class="valider">
-      <input type="submit" name="annuler" value="Annuler" class="Annuler"> <!--Modifier css-->
+    	<input type="submit" name="valider" value="Valider" class="btn">
+      <input type="submit" name="annuler" value="Annuler" class="btn">
 
     </form>
 

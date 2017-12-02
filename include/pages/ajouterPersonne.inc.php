@@ -35,7 +35,7 @@ if(isset($_SESSION['estConnecte'])){
           </select>
         </br>
 
-        <input type="submit" value="Valider" class="valider">
+        <input type="submit" value="Valider" class="btn">
         </form>
 
       <?php }elseif($_POST['categorie'] == 'personnel'){
@@ -58,7 +58,7 @@ if(isset($_SESSION['estConnecte'])){
           </select>
         </br>
 
-        <input type="submit" value="Valider" class="valider">
+        <input type="submit" value="Valider" class="btn">
         </form>
 
     <?php }
@@ -100,7 +100,7 @@ if(isset($_SESSION['estConnecte'])){
 	<input type="radio" name="categorie" value="personnel" id="personnel" /> <label for="personnel">Personnel</label>
 	<br />
 
-	<input type="submit" value="Valider" class="valider">
+	<input type="submit" value="Valider" class="btn">
 
 </form>
 

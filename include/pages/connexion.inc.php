@@ -40,7 +40,7 @@
   <label for="captcha"><img src="image/nb/<?php echo $_SESSION['nbAlea1']?>.jpg"> + <img src="image/nb/<?php echo $_SESSION['nbAlea2']?>.jpg"> = </label>
     <input type="text" name="captcha" id="captcha" required/>
   </br>
-  <input type="submit" value="Valider" class="valider">
+  <input type="submit" value="Valider" class="btn">
 </form>
 
 <?php }else{

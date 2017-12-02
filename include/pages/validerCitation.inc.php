@@ -73,8 +73,8 @@ if(isset($_SESSION['estConnecte']) && $_SESSION['admin']){
 
         <label for="confSuppre">Etes-vous sûr de vouloir supprimer cette citation ?</label>
         </br>
-      	<input type="submit" name="validerSup" value="Valider" class="valider">
-        <input type="submit" name="annulerSup" value="Annuler" class="Annuler"> <!--Modifier css-->
+      	<input type="submit" name="validerSup" value="Valider" class="btn">
+        <input type="submit" name="annulerSup" value="Annuler" class="btn">
 
       </form>
 
@@ -87,8 +87,8 @@ if(isset($_SESSION['estConnecte']) && $_SESSION['admin']){
 
       <label for="confValid">Etes-vous sûr de vouloir valider cette citation ?</label>
       </br>
-      <input type="submit" name="validerVal" value="Valider" class="valider">
-      <input type="submit" name="annulerVal" value="Annuler" class="Annuler"> <!--Modifier css-->
+      <input type="submit" name="validerVal" value="Valider" class="btn">
+      <input type="submit" name="annulerVal" value="Annuler" class="btn">
 
     </form>
 

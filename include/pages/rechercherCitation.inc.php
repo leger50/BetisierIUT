@@ -28,7 +28,7 @@ if(isset($_SESSION['estConnecte'])){
     <input type="textarea" name="vot_valeur" id="vot_valeur" />
   </br>
 
-  <input type="submit" value="Valider" class="valider">
+  <input type="submit" value="Valider" class="btn">
 </form>
 
 <?php
