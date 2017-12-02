@@ -74,7 +74,7 @@ if(isset($_SESSION['estConnecte']) && $_SESSION['admin']){
 
     $numPersonne = $_SESSION['personne']->getPersNum();
 
-    if($perManager->estEtudiant($numPersonne)==null){
+    if($perManager->estEtudiant($numPersonne)){
       $etuManager = new EtudiantManager($pdo);
       $_SESSION['etudiant'] = $etuManager->getEtudiant($numPersonne);
       $_SESSION['etudiant']->setPersonne($_SESSION['personne']);

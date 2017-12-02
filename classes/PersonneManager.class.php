@@ -106,14 +106,18 @@ class PersonneManager {
 		}
 
 		public function estEtudiant($num){
-			$sql = 'SELECT per_num FROM etudiant WHERE per_num = :pernum ';
+			$sql = 'SELECT COUNT(per_num) AS estEtudiant FROM etudiant WHERE per_num = :pernum ';
 
 			$requete = $this->db->prepare($sql);
 			$requete->bindValue(':pernum',$num);
 			$requete->execute();
-			$personne = $requete->fetch(PDO::FETCH_OBJ);
+
+			$estEtudiant = $requete->fetch(PDO::FETCH_OBJ);
+			$estEtudiant = $estEtudiant->estEtudiant;
+
 			$requete->closeCursor();
-			return $personne == null;
+
+			return $estEtudiant != 0;
 		}
 
 		public function getNumLogin($login){

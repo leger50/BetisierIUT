@@ -5,7 +5,7 @@ $numPersonne = $_GET['id'];
 $pdo = new Mypdo();
 $perManager = new PersonneManager($pdo);
 
-if($perManager->estEtudiant($numPersonne)==null){
+if($perManager->estEtudiant($numPersonne)){
 
 $etuManager = new EtudiantManager($pdo);
 $etudiant = $etuManager -> getEtudiant($numPersonne);
