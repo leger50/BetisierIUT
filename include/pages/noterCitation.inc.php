@@ -33,7 +33,7 @@ if(isset($_GET['numCit']) || isset($_SESSION['citation'])){
       <input type="submit" name="annuler" value="Annuler" class="btn">
     </form>
 
-<?php //else if pour valider et annuler
+<?php
 
 }elseif(!empty($_POST['valider'])){
     $valeur = $_POST['valeurNote'];

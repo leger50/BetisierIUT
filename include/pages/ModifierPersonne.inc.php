@@ -1,7 +1,6 @@
 <?php
 if(isset($_SESSION['estConnecte']) && $_SESSION['admin']){
 
-	//Affichage liste des personnes
   if(empty($_GET['idPersonne']) && !isset($_SESSION['estValide'])){
   	$pdo = new Mypdo();
 		$perManager = new PersonneManager($pdo);
@@ -75,11 +74,10 @@ if(isset($_SESSION['estConnecte']) && $_SESSION['admin']){
 
     $numPersonne = $_SESSION['personne']->getPersNum();
 
-    if($perManager->estEtudiant($numPersonne)==null){ //refaire cette condition
+    if($perManager->estEtudiant($numPersonne)==null){
       $etuManager = new EtudiantManager($pdo);
       $_SESSION['etudiant'] = $etuManager->getEtudiant($numPersonne);
-      $_SESSION['etudiant']->setPersonne($_SESSION['personne']); //GAFFE §
-      //unset($_SESSION['personne']);
+      $_SESSION['etudiant']->setPersonne($_SESSION['personne']);
 
       $divisionManager = new DivisionManager($pdo);
       $listeDivisions = $divisionManager->getAllDivisions();
@@ -107,7 +105,7 @@ if(isset($_SESSION['estConnecte']) && $_SESSION['admin']){
         </br>
         <label for="dep_num">Departement : </label>
         <select name="dep_num" id="dep_num">
-          <?php foreach ($listeDepartements as $departement) { //FAIRE SELECTED
+          <?php foreach ($listeDepartements as $departement) {
             $ville = $villeManager->getVille($departement->getDepVilleNum());
 
             if($departement->getDepNum() == $_SESSION['etudiant']->getDepNum()){
@@ -122,11 +120,10 @@ if(isset($_SESSION['estConnecte']) && $_SESSION['admin']){
       <input type="submit" value="Valider" class="btn">
       </form>
 
-		<!--TODO partie salarie-->
     <?php }else{
       $salarieManager = new SalarieManager($pdo);
       $_SESSION['salarie'] = $salarieManager->getSalarie($numPersonne);
-      $_SESSION['salarie']->setPersonne($_SESSION['personne']); //GAFFE §
+      $_SESSION['salarie']->setPersonne($_SESSION['personne']);
 
       $fonctionManager = new FonctionManager($pdo);
       $listeFonctions = $fonctionManager->getAllFonctions();?>
@@ -193,7 +190,7 @@ if(isset($_SESSION['estConnecte']) && $_SESSION['admin']){
   header("Refresh: 3;URL=index.php");
 }
 }
-//FERMER TOUTES LES VARS DE SESSION, TOUTEEEEEEEEESSSS
+
 }else{
   echo "<p>Vous devez être connecté en tant qu'administrateur pour accéder à cette page !</p>";
   echo "<p><img class = 'icone' src='image/erreur.png' alt='Erreur connexion'>Redirection automatique dans 3 secondes</p>";

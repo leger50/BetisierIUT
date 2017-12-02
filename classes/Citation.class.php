@@ -87,7 +87,6 @@ class Citation{
 		return $this->citTableVote;
 	}
 
-	//verifier tableNote
 	public function setCitTableVote($tabVotes){
 		$this->citTableVote = $tabVotes;
 	}

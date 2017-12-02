@@ -6,7 +6,6 @@ class VoteManager {
 		$this->db = $db;
 	}
 
-	//Utile ?
 	public function getAllVote() {
 		$listeVotes = array();
 

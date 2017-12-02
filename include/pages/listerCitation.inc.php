@@ -27,7 +27,7 @@
 
 	</tr>
 
-	<?php //$produits est un tableau d'objet produit
+	<?php
 		foreach ($citations as $citation){?>
 	<tr>
 		<td><?php echo $citation -> getNomEnseignant($citation->getCitNumEnseignant());?></td>

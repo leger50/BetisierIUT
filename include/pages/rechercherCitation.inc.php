@@ -45,7 +45,7 @@ if(empty($_POST['per_num']) && empty($_POST['cit_date']) && empty($_POST['vot_va
   		<th>Moyenne des notes</th>
   	</tr>
 
-  	<?php //$produits est un tableau d'objet produit
+  	<?php
   		foreach ($citations as $citation){?>
   	<tr>
   		<td><?php echo $citation -> getNomEnseignant($citation->getCitNumEnseignant());?></td>

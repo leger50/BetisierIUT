@@ -50,7 +50,6 @@ class CitationManager {
 			$sql = 'UPDATE citation SET cit_date_valide = CURDATE()  WHERE cit_num = :num';
 			$requete = $this->db->prepare($sql);
 			$requete->bindValue(':num', $citation->getCitNum());
-	//	$requete->bindValue(':dateC', '2017-12-25');
 			$requete->execute();
 			$requete->closeCursor();
 
